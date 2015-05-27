@@ -1,0 +1,59 @@
+import os
+
+SECRET_KEY = 'foo'
+DEBUG = True
+
+SITE_TITLE = 'FIND'
+
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:!!!insert password!!!!@localhost/find_march24'
+SOLR_URL = 'http://localhost:8983/solr/openspending'
+
+MAIL_SERVER = 'localhost'
+MAIL_PORT = 25
+# MAIL_USE_TLS = False
+# MAIL_USE_SSL = False
+# MAIL_USERNAME = None
+# MAIL_PASSWORD = None
+MAIL_DEFAULT_SENDER = 'noreply@openspending.org'
+
+CACHE = True
+CACHE_TYPE = 'simple'
+
+
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+
+CELERY_ALWAYS_EAGER = False
+
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+
+#update this if you have a proxy on apache
+#public is public exposed URL
+#private is theprivate address for the server to access
+OPENREFINE_PUBLIC = "http://localhost:3333"
+OPENREFINE_SERVER = "http://localhost:3333"
+
+DEFAULT_FILE_STORAGE = 'filesystem'
+
+UPLOADS_FOLDER = os.path.realpath('.') + '/datauploads/'
+
+FILE_SYSTEM_STORAGE_FILE_VIEW = 'static'
+
+#UploadSet Flask-uploads management of files
+UPLOADED_FILES_DEST = os.path.realpath('.') + '/datauploads/'
+
+#domain whitelist 
+EMAIL_WHITELIST = ['state.gov', 'whitehouse.gov']
+
+
+#approved hosts for proxy
+APPROVED_HOSTS = ["localhost:3333", "path_to_google_refine"]
+
+
+LOCKDOWNUSER = "someusername"
+LOCKDOWNPASSWORD = "somepassword"
+
+LOCKDOWN_FORCE = False
+
+#UploadSet Flask-uploads management of files
+WHOOSH_BASE = os.path.realpath('.') + '/whoosh_index/'
