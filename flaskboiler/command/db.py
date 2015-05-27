@@ -70,7 +70,7 @@ def create_geometry(**args):
 def migrate():
     """ Run pending data migrations """
     url = current_app.config.get('SQLALCHEMY_DATABASE_URI')
-    repo = os.path.join(os.path.dirname(__file__), '..', 'dbmigrations')
+    repo = os.path.join(os.path.dirname(__file__), '..', '..', 'dbmigrations')
 
     try:
         migrate_api.upgrade(url, repo)

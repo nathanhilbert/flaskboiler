@@ -8,8 +8,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 
 from flaskboiler.core import db
 
-from flaskboiler.model.common import (MutableDict, JSONType,
-                                       DatasetFacetMixin)
+from flaskboiler.model.common import (MutableDict, JSONType)
 
 
 
@@ -35,9 +34,6 @@ class Dataset(db.Model):
 
     datalastupdated = Column(DateTime, default=datetime.utcnow)
 
-
-    source_id = Column(Integer, ForeignKey('source.id'))
-    source = relationship(Source, backref=backref("dataset", uselist=False))
 
     mapping = Column(MutableDict.as_mutable(JSONType), default=dict)
 

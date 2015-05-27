@@ -26,25 +26,25 @@ def package_filter(pkg):
     # We want to include openspending.tests but not its subpackages
     # Hence we only check for things starting with openspending.tests.
     # (note the trailing period to denote subpackages)
-    return not pkg.startswith('openspending.tests.')
+    return not pkg.startswith('flaskboiler.tests.')
 
 setup(
-    name='openspending',
+    name='flaskboiler',
     version='0.17',
-    description='OpenSpending',
-    author='Open Knowledge Foundation',
-    author_email='openspending-dev at lists okfn org',
-    url='http://github.com/openspending/openspending',
+    description='FlaskBoiler',
+    author='nathanhilbert',
+    author_email='',
+    url='',
     install_requires=[
     ],
     setup_requires=[],
 
     packages=filter(package_filter, find_packages()),
-    namespace_packages=['openspending'],
+    namespace_packages=['flaskboiler'],
     package_data={
-        'openspending': (
-            files_in_pkgdir('openspending', 'static') +
-            files_in_pkgdir('openspending', 'templates')
+        'flaskboiler': (
+            files_in_pkgdir('flaskboiler', 'static') +
+            files_in_pkgdir('flaskboiler', 'templates')
         )
     },
     test_suite='nose.collector',
@@ -53,19 +53,12 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'ostool = openspending.command:main',
-            'openspending = openspending.command:main'
-        ],
-        'cubes.stores': [
-            'OpenSpendingStore = openspending.model.provider:OpenSpendingStore'
-        ],
-        'cubes.providers': [
-            'openspending = openspending.model.provider:OpenSpendingModelProvider'
+            'manager = flaskboiler.command:main',
         ]
     },
 
     message_extractors={
-        'openspending': [('**.py', 'python', None),
+        'flaskboiler': [('**.py', 'python', None),
                          ('templates/**.html', 'jinja2', None),
                          ('static/**', 'ignore', None),
                          ]
